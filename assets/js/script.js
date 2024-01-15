@@ -48,8 +48,10 @@ function checkAnswer() {
     
     if (isCorrect) { // par that is in brackets is alternative to say if isCorrect is true 
         alert('Hey! You got it right! :D');
+        incrementScore();
     } else {
         alert(`Awwww..... You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -74,11 +76,23 @@ function calculateCorrectAnswer() {
     }
 }
 
+/** 
+ * Gets the current score from the DOM and increments it by 1
+ */
 function incrementScore() {
+
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore; // this ++func adds 1 to the value! impntant put the ++ before! 
 
 }
 
+/** 
+ * Gets the current tally of incorrect answers from the DOM and increments it by 1
+ * !!! need to think, why the oldscore can be the same variable.. is it correct style to do that?
+ */
 function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore; // this ++func adds 1 to the value! impntant put the ++ before! 
 
 }
 
