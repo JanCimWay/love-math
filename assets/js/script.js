@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+    // Function below - will allow the user to submit the answer by hitting Enter button (not clicking the "submit")
+
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
 
     runGame("addition"); // not clear why this is here
 });
@@ -23,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+
+    document.getElementById("answer-box").value = ""; // so starting new game, You should not have to delete old answer
+    document.getElementById("answer-box").focus(); // this line means, that as soon as page will be reloaded, answer box will be in focus - cursor will be there!
 
     // Create two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
